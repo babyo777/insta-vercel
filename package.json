@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "chrome-aws-lambda": "^10.1.0",
+    "express": "^4.19.2",
+    "puppeteer": "^22.12.1",
+    "puppeteer-core": "^22.12.1"
+  }
+}
