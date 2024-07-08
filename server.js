@@ -32,14 +32,16 @@ app.get("/:u", async (req, res) => {
 
     // await page.setViewport({ width: 1366, height: 768 });
 
-    await page.goto(`https://www.instagram.com/${u}`);
+    await page.goto(`https://www.instagram.com/${u}`, {
+      waitUntil: "networkidle2",
+    });
     await page.waitForSelector("header", { timeout: 100 });
 
     let bio = await page.evaluate(() => {
       let bioElement = document.querySelector("header section div span._ap3a");
       return bioElement ? bioElement.innerText : "";
     });
-
+    await browser.close();
     res.json({ bio: bio });
   } catch (err) {
     console.error(err);
